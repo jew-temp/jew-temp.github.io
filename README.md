@@ -1,1 +1,230 @@
-# sporty.github.io
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{{ИМЯ}} · визитка</title>
+    <style>
+        /* === ЗАГОТОВКИ ПОД CSS === */
+        
+        /* 1. Базовые сбросы и переменные */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS переменные — поменяй под свой вкус */
+        :root {
+            --bg: #f5f7fb;
+            --card-bg: #ffffff;
+            --text: #1a1f2c;
+            --text-light: #5c6a7a;
+            --accent: {{ЦВЕТ АКЦЕНТА}};  /* например #2d3e50 или #ff6b6b */
+            --accent-hover: {{ЦВЕТ ПРИ НАВЕДЕНИИ}}; /* чуть темнее/светлее акцента */
+            --border: #e9ecf0;
+            --shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            --radius: 28px;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--text);
+            line-height: 1.45;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Карточка визитки */
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Герой-секция (фон + аватар + имя) */
+        .hero {
+            background: linear-gradient(135deg, {{ОСНОВНОЙ ЦВЕТ ГРАДИЕНТА}}, {{ВТОРИЧНЫЙ ЦВЕТ ГРАДИЕНТА}});
+            padding: 2.8rem 2rem 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.9);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 1.2rem;
+            background: #e2e8f0;
+        }
+
+        .name {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.35rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.6rem;
+        }
+
+        /* основной контент */
+        .content {
+            padding: 2rem;
+        }
+
+        .bio {
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* Ссылки/соцсети */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: #f1f3f7;
+            padding: 0.75rem 1.3rem;
+            border-radius: 60px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn i {
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* секция с навыками / интересами — заглушка */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: #eef2ff;
+            color: var(--accent);
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* контакты внизу */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* мобильная адаптация */
+        @media (max-width: 550px) {
+            body {
+                padding: 0.8rem;
+            }
+            .hero {
+                padding: 1.8rem 1.2rem 2rem;
+            }
+            .name {
+                font-size: 1.7rem;
+            }
+            .content {
+                padding: 1.4rem;
+            }
+            .btn {
+                padding: 0.65rem 1.1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* класс для темной темы — если захочешь потом добавить */
+        /* .dark-theme { ... } */
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="hero">
+        <!-- ВСТАВЬ ССЫЛКУ НА ФОТО (замени) -->
+        <img class="avatar" src="{{ССЫЛКА НА ФОТОГРАФИЮ}}" alt="аватар">
+        <div class="name">{{ИМЯ И ФАМИЛИЯ}}</div>
+        <div class="badge">{{КОРОТКИЙ ТЕГЛАЙН / РОД ДЕЯТЕЛЬНОСТИ}}</div>
+    </div>
+
+    <div class="content">
+        <div class="bio">
+            {{НЕБОЛЬШОЕ ОПИСАНИЕ: кто она, чем увлекается, что делает. 2-3 предложения}}
+        </div>
+
+        <div class="links">
+            <!-- ЗАМЕНИ ССЫЛКИ НА РЕАЛЬНЫЕ ПРОФИЛИ -->
+            <a href="{{TELEGRAM ССЫЛКА}}" class="btn">📱 Telegram</a>
+            <a href="{{INSTAGRAM ССЫЛКА}}" class="btn">📷 Instagram</a>
+            <a href="{{GITHUB ССЫЛКА}}" class="btn">🐙 GitHub</a>
+            <!-- при желании можно добавить VK, Discord, Behance и тд -->
+        </div>
+
+        <div class="skills">
+            <!-- НАВЫКИ / ИНТЕРЕСЫ, можно заменить на любые слова -->
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">робототехника</span>
+            <span class="skill-tag">рок музыка</span>
+        </div>
+
+        <div class="contact-row">
+            <span class="contact-item">✉️ {{ЭЛ. ПОЧТА}}</span>
+            <span class="contact-item">📍 {{СТРАНА / ГОРОД}}</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
