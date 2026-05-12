@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>sporty · визитка</title>
+    <title>sporty · dark edition</title>
     <style>
         * {
             margin: 0;
@@ -12,19 +12,19 @@
         }
 
         body {
-            background: #f5eff7;
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: #0e0c14;
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             padding: 2rem;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2e2c34;
+            color: #e5dfe6;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* мягкие психоделические пятна (твои вайбы, деликатно) */
+        /* мягкие психоделические пятна (тёмная версия) */
         .psy-bg {
             position: fixed;
             top: 0;
@@ -36,59 +36,58 @@
         }
         .blob {
             position: absolute;
-            filter: blur(70px);
+            filter: blur(80px);
             border-radius: 50%;
             opacity: 0.2;
-            animation: slowDrift 22s infinite alternate ease-in-out;
+            animation: slowDrift 24s infinite alternate ease-in-out;
         }
         .blob1 {
             width: 400px;
             height: 400px;
-            background: #ffb7c5;
+            background: #b77eb0;
             top: -100px;
             left: -80px;
         }
         .blob2 {
             width: 450px;
             height: 450px;
-            background: #cbb2fe;
+            background: #6e5a9e;
             bottom: -120px;
             right: -100px;
-            animation-duration: 26s;
+            animation-duration: 28s;
         }
         .blob3 {
             width: 300px;
             height: 300px;
-            background: #ffe0a3;
+            background: #b4667b;
             top: 40%;
             left: 70%;
             opacity: 0.15;
-            animation-duration: 28s;
+            animation-duration: 30s;
         }
         @keyframes slowDrift {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(25px, 20px) scale(1.15); }
+            100% { transform: translate(30px, 20px) scale(1.2); }
         }
 
-        /* карточка — мягкая, без резких углов */
         .card {
-            max-width: 780px;
+            max-width: 800px;
             width: 100%;
-            background: rgba(255, 253, 250, 0.96);
-            backdrop-filter: blur(2px);
+            background: #17141fdd;
+            backdrop-filter: blur(4px);
             border-radius: 2rem;
             overflow: hidden;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.6);
+            transition: transform 0.2s;
             position: relative;
             z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 220, 250, 0.15);
         }
 
         .header {
             padding: 2rem 2rem 1.5rem;
-            background: linear-gradient(135deg, #fffaf5 0%, #fef3f2 100%);
-            border-bottom: 1px solid #ffe6e0;
+            background: linear-gradient(145deg, #1f1a2c, #14111c);
+            border-bottom: 1px solid #2f2740;
         }
 
         .badge-line {
@@ -98,7 +97,7 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             font-size: 0.7rem;
-            color: #8a7c8c;
+            color: #b7a7cf;
             margin-bottom: 1.2rem;
             letter-spacing: 0.3px;
         }
@@ -108,25 +107,24 @@
             height: 100px;
             border-radius: 2rem;
             object-fit: cover;
-            background: #efe2d6;
-            border: 3px solid white;
-            box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.1);
+            background: #2d243b;
+            border: 2px solid #bba0dc;
+            box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.5);
             margin-bottom: 1rem;
-            transition: 0.2s;
         }
 
         h1 {
             font-size: 2.2rem;
             font-weight: 500;
             letter-spacing: -0.3px;
-            color: #3d3345;
+            color: #f4eefe;
             margin-bottom: 0.2rem;
         }
 
         .location {
             font-size: 0.85rem;
-            color: #8f7a92;
-            background: #f7ede8;
+            color: #bfacdc;
+            background: #261e33;
             display: inline-block;
             padding: 0.2rem 1rem;
             border-radius: 40px;
@@ -139,14 +137,13 @@
             margin-top: 1.2rem;
         }
         .pill {
-            background: #f7ede8;
-            border: none;
+            background: #291f37;
+            border: 1px solid #463a5a;
             padding: 0.3rem 1rem;
             border-radius: 60px;
             font-size: 0.7rem;
             font-weight: 500;
-            color: #6a4e6e;
-            transition: all 0.1s ease;
+            color: #dacdff;
         }
 
         .content {
@@ -155,13 +152,13 @@
 
         .description {
             font-size: 0.95rem;
-            line-height: 1.45;
-            color: #4b3e51;
-            background: #fefaf7;
+            line-height: 1.5;
+            color: #ddcfec;
+            background: #110e1ad9;
             padding: 0.9rem 1rem;
             border-radius: 1.2rem;
             margin-bottom: 2rem;
-            border-left: 3px solid #e2b6c2;
+            border-left: 3px solid #b289b3;
         }
 
         .fandom-header {
@@ -174,25 +171,26 @@
         .section-title {
             font-size: 0.75rem;
             letter-spacing: 1px;
-            color: #a987b2;
-            background: #f7ede8;
+            color: #d8bfee;
+            background: #221e30;
             padding: 0.2rem 0.8rem;
             border-radius: 40px;
         }
         .toggle-fandoms {
             background: none;
-            border: none;
-            color: #a27da8;
+            border: 1px solid #403656;
+            color: #cbbcee;
             font-size: 0.7rem;
             cursor: pointer;
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.7rem;
             border-radius: 30px;
             transition: 0.1s;
             font-weight: 500;
         }
         .toggle-fandoms:hover {
-            background: #f5e4e4;
-            color: #6d4675;
+            background: #2f2845;
+            color: #efdbff;
+            border-color: #8f7bb5;
         }
 
         .fandom-list {
@@ -203,13 +201,12 @@
             transition: all 0.2s;
         }
         .fandom-item {
-            background: #fdfdfc;
-            border: 1px solid #f2e2e2;
+            background: #1d1829;
+            border: 1px solid #392f4b;
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-size: 0.75rem;
-            color: #7a5f81;
-            transition: 0.1s;
+            color: #dacbff;
         }
 
         .links {
@@ -219,12 +216,12 @@
             margin: 1.5rem 0 1.2rem;
         }
         .btn {
-            background: #f7ede8;
-            border: 1px solid #efdddb;
+            background: #1c1828;
+            border: 1px solid #423759;
             padding: 0.5rem 1.2rem;
             border-radius: 3rem;
             text-decoration: none;
-            color: #5f4b63;
+            color: #ded1ff;
             font-size: 0.8rem;
             font-weight: 470;
             transition: all 0.15s;
@@ -233,20 +230,20 @@
             gap: 6px;
         }
         .btn:hover {
-            background: #f5e0dd;
+            background: #2a2340;
+            border-color: #bea7ff;
+            color: #f1e9ff;
             transform: translateY(-1px);
-            border-color: #ddb7c0;
-            color: #402d44;
         }
 
         .footer-line {
-            border-top: 1px solid #f5e2df;
+            border-top: 1px solid #2d253f;
             padding-top: 1rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             font-size: 0.7rem;
-            color: #a58c9e;
+            color: #a293c2;
         }
 
         @media (max-width: 600px) {
@@ -267,12 +264,12 @@
     <div class="card">
         <div class="header">
             <div class="badge-line">
-                <span>✨ sporty · creative chaos ✨</span>
+                <span>🌙 sporty · midnight edition 🌙</span>
                 <span id="liveTime">--:--</span>
             </div>
-            <img class="avatar" src="https://placehold.co/500x500/f8e2d9/a4748c?text=sporty" alt="avatar">
+            <img class="avatar" src="https://placehold.co/400x400/2e2640/bbaad9?text=sporty" alt="avatar">
             <h1>sporty.</h1>
-            <div class="location">🌿 Pennsylvania / my own world</div>
+            <div class="location">💜 Pennsylvania / nocturnal mode</div>
             <div class="pill-line">
                 <span class="pill">#roblox</span>
                 <span class="pill">#myths hunter</span>
@@ -284,16 +281,15 @@
 
         <div class="content">
             <div class="description">
-                🦋 old roblox mysteries, horror doors and lamb cults — my comfort zone.<br>
-                🎨 low‑key drawing, gaming & collecting weird vibes.
+                🦇 old roblox mysteries, horror doors & cults — my kind of comfort.<br>
+                🌙 drawing, gaming & collecting strange tales.
             </div>
 
             <div class="fandom-header">
-                <div class="section-title">🎀 фандомы / список 🎀</div>
+                <div class="section-title">✦ фандомы ✦</div>
                 <button class="toggle-fandoms" id="toggleFandomsBtn">[ скрыть ]</button>
             </div>
             <div class="fandom-list" id="fandomList">
-                <!-- полный список из твоего файла -->
                 <span class="fandom-item">роблокс</span>
                 <span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span>
                 <span class="fandom-item">рояль хай</span>
@@ -326,15 +322,14 @@
             </div>
 
             <div class="footer-line">
-                <span>🕯️ she/her · quiet gamer · myth lover</span>
-                <span>✉️ sporty@creepy.zone</span>
+                <span>🖤 she/her · quiet gamer · myth hunter</span>
+                <span>✉️ sporty@dark.zone</span>
             </div>
         </div>
     </div>
 
     <script>
         (function(){
-            // часики
             function updateClock(){
                 const now = new Date();
                 const timeStr = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
@@ -342,9 +337,8 @@
                 if(liveSpan) liveSpan.innerText = timeStr;
             }
             updateClock();
-            setInterval(updateClock, 60000); // обновление каждую минуту
+            setInterval(updateClock, 60000);
 
-            // кнопка скрыть/показать фандомы
             const fandomContainer = document.getElementById('fandomList');
             const toggleBtn = document.getElementById('toggleFandomsBtn');
             let visible = true;
