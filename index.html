@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>sporty · визитка</title>
+  <title>sporty · визитка + психоделия</title>
   <style>
     * {
       margin: 0;
@@ -12,31 +12,85 @@
     }
 
     body {
-      background: #dbdad5;  /* мягкий винтажный американо-бейдж */
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #dbdad5, #c7cdc0);
       font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
       padding: 2rem;
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #1c1e21;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* карточка как открытка */
+    /* психоделические размытые пятна (твои вайбы) */
+    .psy-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob {
+      position: absolute;
+      filter: blur(70px);
+      border-radius: 65%;
+      opacity: 0.22;
+      animation: slowDrift 24s infinite alternate ease-in-out;
+    }
+    .blob1 {
+      width: 450px;
+      height: 450px;
+      background: #b2f0b0;
+      top: -120px;
+      left: -120px;
+    }
+    .blob2 {
+      width: 500px;
+      height: 500px;
+      background: #cfa5ff;
+      bottom: -150px;
+      right: -100px;
+      animation-duration: 28s;
+    }
+    .blob3 {
+      width: 300px;
+      height: 300px;
+      background: #ffb76b;
+      top: 50%;
+      left: 65%;
+      opacity: 0.2;
+      animation-duration: 20s;
+    }
+    @keyframes slowDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.2); }
+    }
+
     .card {
       max-width: 780px;
       width: 100%;
       background: #ffffffef;
       border-radius: 2rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.02);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,220,150,0.2);
       overflow: hidden;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(0px);
+      backdrop-filter: blur(1px);
+      transition: box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+      animation: borderGlow 6s infinite alternate;
     }
 
-    /* hero — мягкий градиент в духе calm america */
+    @keyframes borderGlow {
+      0% { box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(210,180,140,0.2); }
+      100% { box-shadow: 0 25px 40px -8px rgba(0,0,0,0.3), 0 0 0 2px rgba(170,240,160,0.5); }
+    }
+
     .hero {
-      background: linear-gradient(115deg, #ece9e0 0%, #f4f1e8 100%);
+      background: linear-gradient(115deg, #f9f6ef 0%, #ebe6db 100%);
       padding: 2rem 2rem 1.8rem;
       border-bottom: 1px solid #e0ddd5;
     }
@@ -60,7 +114,8 @@
       object-fit: cover;
       background: #cdc9bf;
       border: 3px solid #fef9ef;
-      box-shadow: 0 6px 12px -8px rgba(0,0,0,0.15);
+      box-shadow: 0 0 0 2px #b1cfaa, 0 6px 14px rgba(0,0,0,0.1);
+      transition: 0.2s;
       margin-bottom: 1rem;
     }
 
@@ -75,6 +130,10 @@
       font-weight: 500;
       letter-spacing: -0.5px;
       color: #2a261f;
+      background: linear-gradient(135deg, #2f2b24, #6a5c48);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .location {
       font-size: 0.85rem;
@@ -99,7 +158,6 @@
       color: #4a3f32;
     }
 
-    /* контент */
     .content {
       padding: 2rem;
     }
@@ -113,7 +171,6 @@
       padding-left: 1rem;
     }
 
-    /* фандомная сетка — все твои игры/вселенные */
     .fandom-grid {
       margin: 1.8rem 0 2rem;
     }
@@ -142,7 +199,6 @@
       border: 1px solid #e3ddd2;
     }
 
-    /* соцсети в спокойном ритме */
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -187,75 +243,65 @@
   </style>
 </head>
 <body>
-
-<div class="card">
-  <div class="hero">
-    <div class="top-row">
-      <span>✦ ༘ AMERICAN VIBE ˚ ༘ ೀ</span>
-      <span>✧ east coast . offline moment ✧</span>
-    </div>
-    <img class="avatar" src="https://placehold.co/500x500/e1d9cf/8e806c?text=sporty" alt="avatar">
-    <div class="name-badge">
-      <h1>sporty.</h1>
-      <div class="location">📍 Pennsylvania / online</div>
-    </div>
-    <div class="tags">
-      <span class="pill">#roblox player</span>
-      <span class="pill">#myths hunter</span>
-      <span class="pill">#quiet enjoyer</span>
-      <span class="pill">#america fan</span>
-    </div>
+  <!-- твои психоделические чернила -->
+  <div class="psy-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
   </div>
 
-  <div class="content">
-    <div class="description">
-      🧸  just a girl who loves old roblox myths, horror doors, and calm american suburbs.  
-      💿  cult of the lamb, need more heat, grocery gang — i’m into weird and cozy at the same time.
-    </div>
-
-    <!-- ПОЛНЫЙ СПИСОК, который ты скинул -->
-    <div class="fandom-grid">
-      <div class="fandom-title">✦ COLLECTION · фандомы ✦</div>
-      <div class="fandom-list">
-        <span class="fandom-item">роблокс</span>
-        <span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span>
-        <span class="fandom-item">рояль хай</span>
-        <span class="fandom-item">эвейд</span>
-        <span class="fandom-item">gasa4</span>
-        <span class="fandom-item">grocery gang</span>
-        <span class="fandom-item">сенчоус</span>
-        <span class="fandom-item">RNABS</span>
-        <span class="fandom-item">файтинг</span>
-        <span class="fandom-item">need more heat</span>
-        <span class="fandom-item">soybean</span>
-        <span class="fandom-item">kavra</span>
-        <span class="fandom-item">work at pizza place</span>
-        <span class="fandom-item">tr:ud</span>
-        <span class="fandom-item">hello John doe</span>
-        <span class="fandom-item">форсакен (нет)</span>
-        <span class="fandom-item">подонки</span>
-        <span class="fandom-item">рейнбоу френдс</span>
-        <span class="fandom-item">дорс</span>
-        <span class="fandom-item">Cult of the Lamb</span>
-        <span class="fandom-item">TADC</span>
-        <span class="fandom-item">аперафобия</span>
+  <div class="card">
+    <div class="hero">
+      <div class="top-row">
+        <span>✦ ༘ AMERICAN VIBE ⊕ PSYCH-EDGE ˚ ༘ ೀ</span>
+        <span>✧ low‑level engineer core ✧</span>
+      </div>
+      <img class="avatar" src="https://placehold.co/500x500/e1d9cf/8e806c?text=sporty" alt="avatar">
+      <div class="name-badge">
+        <h1>sporty.</h1>
+        <div class="location">📍 Pennsylvania / offline / glitch</div>
+      </div>
+      <div class="tags">
+        <span class="pill">#roblox player</span>
+        <span class="pill">#myths hunter</span>
+        <span class="pill">#quiet enjoyer</span>
+        <span class="pill">#america fan</span>
+        <span class="pill">#psy vibes</span>
       </div>
     </div>
 
-    <!-- ссылки (вставь реальные профили) -->
-    <div class="links">
-      <a href="#" class="btn">📱 Telegram / @sporty</a>
-      <a href="#" class="btn">📷 Inst / sporty.png</a>
-      <a href="#" class="btn">🐙 GitHub / sporty_alt</a>
-      <a href="#" class="btn">🎮 Roblox / @sporty</a>
-    </div>
+    <div class="content">
+      <div class="description">
+        🧸  calm american energy + weirdcore undertone. old roblox myths, horror doors, cult of the lamb.  
+        🌀  * low‑level engineer’s touch: soft glitch, blurred gradients, slow breathing shadows.
+      </div>
 
-    <div class="contact-row">
-      <span>🗽  US timezone  ·  she/her  ·  calm energy</span>
-      <span>📧  sporty@cozy.america</span>
+      <div class="fandom-grid">
+        <div class="fandom-title">✦ COLLECTION · фандомы ✦</div>
+        <div class="fandom-list">
+          <span class="fandom-item">роблокс</span><span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span><span class="fandom-item">рояль хай</span>
+          <span class="fandom-item">эвейд</span><span class="fandom-item">gasa4</span><span class="fandom-item">grocery gang</span>
+          <span class="fandom-item">сенчоус</span><span class="fandom-item">RNABS</span><span class="fandom-item">файтинг</span>
+          <span class="fandom-item">need more heat</span><span class="fandom-item">soybean</span><span class="fandom-item">kavra</span>
+          <span class="fandom-item">work at pizza place</span><span class="fandom-item">tr:ud</span><span class="fandom-item">hello John doe</span>
+          <span class="fandom-item">форсакен (нет)</span><span class="fandom-item">подонки</span><span class="fandom-item">рейнбоу френдс</span>
+          <span class="fandom-item">дорс</span><span class="fandom-item">Cult of the Lamb</span><span class="fandom-item">TADC</span>
+          <span class="fandom-item">аперафобия</span>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="#" class="btn">📱 Telegram / @sporty</a>
+        <a href="#" class="btn">📷 Inst / sporty.png</a>
+        <a href="#" class="btn">🐙 GitHub / sporty_alt</a>
+        <a href="#" class="btn">🎮 Roblox / @sporty</a>
+      </div>
+
+      <div class="contact-row">
+        <span>🗽  US timezone · she/her · low‑level dreams</span>
+        <span>📧  sporty@cozy.america // 🌀 psysign: //LL_eng//</span>
+      </div>
     </div>
   </div>
-</div>
-
 </body>
 </html>
