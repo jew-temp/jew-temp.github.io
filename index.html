@@ -1,307 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>sporty · визитка + психоделия</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sporty · core</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at 20% 30%, #dbdad5, #c7cdc0);
-      font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
-      padding: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1c1e21;
-      position: relative;
-      overflow-x: hidden;
-    }
+        body {
+            background: #101014;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #dddddd;
+        }
 
-    /* психоделические размытые пятна (твои вайбы) */
-    .psy-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .blob {
-      position: absolute;
-      filter: blur(70px);
-      border-radius: 65%;
-      opacity: 0.22;
-      animation: slowDrift 24s infinite alternate ease-in-out;
-    }
-    .blob1 {
-      width: 450px;
-      height: 450px;
-      background: #b2f0b0;
-      top: -120px;
-      left: -120px;
-    }
-    .blob2 {
-      width: 500px;
-      height: 500px;
-      background: #cfa5ff;
-      bottom: -150px;
-      right: -100px;
-      animation-duration: 28s;
-    }
-    .blob3 {
-      width: 300px;
-      height: 300px;
-      background: #ffb76b;
-      top: 50%;
-      left: 65%;
-      opacity: 0.2;
-      animation-duration: 20s;
-    }
-    @keyframes slowDrift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, 30px) scale(1.2); }
-    }
+        /* карточка — агрессивный минимализм */
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: #14161c;
+            border: 1.5px solid #2a2c33;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.5);
+        }
 
-    .card {
-      max-width: 780px;
-      width: 100%;
-      background: #ffffffef;
-      border-radius: 2rem;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,220,150,0.2);
-      overflow: hidden;
-      backdrop-filter: blur(1px);
-      transition: box-shadow 0.3s ease;
-      position: relative;
-      z-index: 2;
-      animation: borderGlow 6s infinite alternate;
-    }
+        /* шапка без нежностей */
+        .header {
+            background: #0b0d12;
+            padding: 1.5rem;
+            border-bottom: 1px solid #252830;
+        }
 
-    @keyframes borderGlow {
-      0% { box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(210,180,140,0.2); }
-      100% { box-shadow: 0 25px 40px -8px rgba(0,0,0,0.3), 0 0 0 2px rgba(170,240,160,0.5); }
-    }
+        .badge-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #7a7e8f;
+            font-family: monospace;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
 
-    .hero {
-      background: linear-gradient(115deg, #f9f6ef 0%, #ebe6db 100%);
-      padding: 2rem 2rem 1.8rem;
-      border-bottom: 1px solid #e0ddd5;
-    }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 0;
+            background: #1f222c;
+            border: 1px solid #3e3f4a;
+            object-fit: cover;
+            margin-bottom: 0.75rem;
+        }
 
-    .top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.3px;
-      color: #6b6258;
-    }
+        h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.5px;
+            color: #ebebef;
+            font-family: monospace;
+        }
 
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 100%;
-      object-fit: cover;
-      background: #cdc9bf;
-      border: 3px solid #fef9ef;
-      box-shadow: 0 0 0 2px #b1cfaa, 0 6px 14px rgba(0,0,0,0.1);
-      transition: 0.2s;
-      margin-bottom: 1rem;
-    }
+        .location {
+            font-size: 0.75rem;
+            color: #9ba0b0;
+            margin-top: 0.25rem;
+        }
 
-    .name-badge {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      color: #2a261f;
-      background: linear-gradient(135deg, #2f2b24, #6a5c48);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .location {
-      font-size: 0.85rem;
-      background: #e5dfd3;
-      padding: 0.25rem 1rem;
-      border-radius: 40px;
-      color: #4a433a;
-    }
+        .pill-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .pill {
+            background: #1d202a;
+            border: 1px solid #2f313e;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.65rem;
+            color: #b9bedb;
+            font-family: monospace;
+        }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .pill {
-      background: #e5dfd3;
-      padding: 0.3rem 0.9rem;
-      border-radius: 60px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #4a3f32;
-    }
+        /* контент */
+        .content {
+            padding: 1.5rem;
+        }
 
-    .content {
-      padding: 2rem;
-    }
+        .description {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #b8bcca;
+            border-left: 2px solid #3a3f54;
+            padding-left: 0.8rem;
+            margin-bottom: 1.8rem;
+            font-family: monospace;
+        }
 
-    .description {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      color: #3c3730;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid #bcafa0;
-      padding-left: 1rem;
-    }
+        /* fandom grid без розовых фонов */
+        .section-title {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #8c92a8;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #282d3a;
+            display: inline-block;
+        }
 
-    .fandom-grid {
-      margin: 1.8rem 0 2rem;
-    }
-    .fandom-title {
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      color: #7d6e5c;
-      margin-bottom: 1rem;
-      border-bottom: 1px dashed #e2dcd2;
-      display: inline-block;
-    }
-    .fandom-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-    .fandom-item {
-      background: #f4f1ea;
-      border-radius: 40px;
-      padding: 0.4rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 450;
-      color: #524b41;
-      transition: 0.1s linear;
-      border: 1px solid #e3ddd2;
-    }
+        .fandom-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+        .fandom-item {
+            background: #0f111a;
+            border: 1px solid #2b2e3d;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.7rem;
+            color: #cdd2e6;
+            font-family: monospace;
+        }
 
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 1.8rem;
-      margin-top: 1rem;
-    }
-    .btn {
-      background: #f0ede7;
-      padding: 0.5rem 1.1rem;
-      border-radius: 100px;
-      text-decoration: none;
-      color: #3e3a33;
-      font-size: 0.85rem;
-      font-weight: 470;
-      transition: 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn:hover {
-      background: #e1d9cf;
-      transform: translateY(-1px);
-    }
+        /* ссылки — минимум анимации */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0 1.4rem 0;
+        }
+        .btn {
+            background: #0b0d12;
+            border: 1px solid #323643;
+            padding: 0.4rem 1rem;
+            border-radius: 0;
+            text-decoration: none;
+            color: #cbcfdf;
+            font-size: 0.75rem;
+            font-weight: normal;
+            font-family: monospace;
+            transition: 0.1s linear;
+        }
+        .btn:hover {
+            background: #1e212c;
+            border-color: #5f6c8f;
+            color: white;
+        }
 
-    .contact-row {
-      border-top: 1px solid #ece4da;
-      padding-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: #8b8274;
-    }
+        .footer-line {
+            border-top: 1px solid #212430;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: #676d82;
+            font-family: monospace;
+        }
 
-    @media (max-width: 560px) {
-      body { padding: 1rem; }
-      .hero { padding: 1.5rem; }
-      h1 { font-size: 1.7rem; }
-      .content { padding: 1.2rem; }
-    }
-  </style>
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <!-- твои психоделические чернила -->
-  <div class="psy-bg">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-  </div>
 
-  <div class="card">
-    <div class="hero">
-      <div class="top-row">
-        <span>✦ ༘ AMERICAN VIBE ⊕ PSYCH-EDGE ˚ ༘ ೀ</span>
-        <span>✧ low‑level engineer core ✧</span>
-      </div>
-      <img class="avatar" src="https://placehold.co/500x500/e1d9cf/8e806c?text=sporty" alt="avatar">
-      <div class="name-badge">
+<div class="card">
+    <div class="header">
+        <div class="badge-line">
+            <span>// SPORTY / CORE</span>
+            <span>[STATIC / OFFLINE]</span>
+        </div>
+        <img class="avatar" src="https://placehold.co/400x400/1a1d26/8f95ae?text=SP" alt="avatar">
         <h1>sporty.</h1>
-        <div class="location">📍 Pennsylvania / offline / glitch</div>
-      </div>
-      <div class="tags">
-        <span class="pill">#roblox player</span>
-        <span class="pill">#myths hunter</span>
-        <span class="pill">#quiet enjoyer</span>
-        <span class="pill">#america fan</span>
-        <span class="pill">#psy vibes</span>
-      </div>
+        <div class="location">🇺🇸 PENNSYLVANIA — GLITCH MODE</div>
+        <div class="pill-line">
+            <span class="pill">ROBLOX/MYTHS</span>
+            <span class="pill">LOW FAN</span>
+            <span class="pill">HORROR DOORS</span>
+            <span class="pill">CULT</span>
+            <span class="pill">NO COZY</span>
+        </div>
     </div>
 
     <div class="content">
-      <div class="description">
-        🧸  calm american energy + weirdcore undertone. old roblox myths, horror doors, cult of the lamb.  
-        🌀  * low‑level engineer’s touch: soft glitch, blurred gradients, slow breathing shadows.
-      </div>
-
-      <div class="fandom-grid">
-        <div class="fandom-title">✦ COLLECTION · фандомы ✦</div>
-        <div class="fandom-list">
-          <span class="fandom-item">роблокс</span><span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span><span class="fandom-item">рояль хай</span>
-          <span class="fandom-item">эвейд</span><span class="fandom-item">gasa4</span><span class="fandom-item">grocery gang</span>
-          <span class="fandom-item">сенчоус</span><span class="fandom-item">RNABS</span><span class="fandom-item">файтинг</span>
-          <span class="fandom-item">need more heat</span><span class="fandom-item">soybean</span><span class="fandom-item">kavra</span>
-          <span class="fandom-item">work at pizza place</span><span class="fandom-item">tr:ud</span><span class="fandom-item">hello John doe</span>
-          <span class="fandom-item">форсакен (нет)</span><span class="fandom-item">подонки</span><span class="fandom-item">рейнбоу френдс</span>
-          <span class="fandom-item">дорс</span><span class="fandom-item">Cult of the Lamb</span><span class="fandom-item">TADC</span>
-          <span class="fandom-item">аперафобия</span>
+        <div class="description">
+            ⚡ OLD ROBLOX MYTHS · DOORS · CULT OF THE LAMB | TADC<br>
+            ⚡ NO FAKE NICE | AMBIENT: AMERICAN SUBURB + STATIC.
         </div>
-      </div>
 
-      <div class="links">
-        <a href="#" class="btn">📱 Telegram / @sporty</a>
-        <a href="#" class="btn">📷 Inst / sporty.png</a>
-        <a href="#" class="btn">🐙 GitHub / sporty_alt</a>
-        <a href="#" class="btn">🎮 Roblox / @sporty</a>
-      </div>
+        <div class="section-title">✦ ФАНДОМЫ / RAW LIST ✦</div>
+        <div class="fandom-list">
+            <span class="fandom-item">роблокс</span>
+            <span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span>
+            <span class="fandom-item">рояль хай</span>
+            <span class="fandom-item">эвейд</span>
+            <span class="fandom-item">gasa4</span>
+            <span class="fandom-item">grocery gang</span>
+            <span class="fandom-item">сенчоус</span>
+            <span class="fandom-item">RNABS</span>
+            <span class="fandom-item">файтинг</span>
+            <span class="fandom-item">need more heat</span>
+            <span class="fandom-item">soybean</span>
+            <span class="fandom-item">kavra</span>
+            <span class="fandom-item">work at pizza place</span>
+            <span class="fandom-item">tr:ud</span>
+            <span class="fandom-item">hello John doe</span>
+            <span class="fandom-item">форсакен (нет)</span>
+            <span class="fandom-item">подонки</span>
+            <span class="fandom-item">рейнбоу френдс</span>
+            <span class="fandom-item">дорс</span>
+            <span class="fandom-item">Cult of the Lamb</span>
+            <span class="fandom-item">TADC</span>
+            <span class="fandom-item">аперафобия</span>
+        </div>
 
-      <div class="contact-row">
-        <span>🗽  US timezone · she/her · low‑level dreams</span>
-        <span>📧  sporty@cozy.america // 🌀 psysign: //LL_eng//</span>
-      </div>
+        <div class="links">
+            <a href="#" class="btn">📁 TELEGRAM / @sporty</a>
+            <a href="#" class="btn">📷 INSTA / sporty.jpg</a>
+            <a href="#" class="btn">🐙 GITHUB / sporty_core</a>
+            <a href="#" class="btn">🎮 ROBLOX / sporty</a>
+        </div>
+
+        <div class="footer-line">
+            <span>⛧ US TIMEZONE · SHE/HER · NO BS ⛧</span>
+            <span>📡 sporty@lowlevel.zone</span>
+        </div>
     </div>
-  </div>
+</div>
+
 </body>
 </html>
