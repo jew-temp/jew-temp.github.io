@@ -1,269 +1,260 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Визитка · Фандомная темнота</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>sporty · визитка</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Тёмная тема с фиолетово-красным уклоном */
-        :root {
-            --bg-dark: #0b0a0f;
-            --card-bg: rgba(18, 16, 24, 0.85);
-            --border-glow: #b91c2c;
-            --text-primary: #f0eef7;
-            --text-muted: #a19fb1;
-            --accent-pink: #f43f5e;
-            --accent-purple: #9333ea;
-            --accent-blood: #7f1a2b;
-            --glow-shadow: 0 0 10px rgba(180, 30, 50, 0.4);
-        }
+    body {
+      background: #dbdad5;  /* мягкий винтажный американо-бейдж */
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1c1e21;
+    }
 
-        body {
-            background: radial-gradient(circle at 30% 10%, #1b1325, var(--bg-dark));
-            font-family: 'Courier New', 'Fira Code', monospace;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
+    /* карточка как открытка */
+    .card {
+      max-width: 780px;
+      width: 100%;
+      background: #ffffffef;
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.02);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(0px);
+    }
 
-        /* Карточка — как дневник из Cult of the Lamb + глитч TADC */
-        .card {
-            max-width: 700px;
-            width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(180, 30, 50, 0.6);
-            border-radius: 32px;
-            padding: 1rem;
-            box-shadow: var(--glow-shadow), 0 20px 35px -10px black;
-            transition: all 0.25s ease;
-        }
+    /* hero — мягкий градиент в духе calm america */
+    .hero {
+      background: linear-gradient(115deg, #ece9e0 0%, #f4f1e8 100%);
+      padding: 2rem 2rem 1.8rem;
+      border-bottom: 1px solid #e0ddd5;
+    }
 
-        .inner {
-            border: 1px dashed rgba(255, 50, 80, 0.4);
-            border-radius: 26px;
-            padding: 1.8rem;
-            background: rgba(5, 5, 10, 0.4);
-        }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+      color: #6b6258;
+    }
 
-        /* шапка с имитацией старой игры */
-        .badge-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 1.2rem;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            border-bottom: 1px solid #2a2533;
-            padding-bottom: 0.7rem;
-        }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 100%;
+      object-fit: cover;
+      background: #cdc9bf;
+      border: 3px solid #fef9ef;
+      box-shadow: 0 6px 12px -8px rgba(0,0,0,0.15);
+      margin-bottom: 1rem;
+    }
 
-        .crown {
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #d4af37;
-            text-shadow: 0 0 3px #f97316;
-        }
+    .name-badge {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: #2a261f;
+    }
+    .location {
+      font-size: 0.85rem;
+      background: #e5dfd3;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      color: #4a433a;
+    }
 
-        /* аватар в стиле TADC (зубчатая рамка) */
-        .avatar-section {
-            display: flex;
-            align-items: center;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.8rem;
-        }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .pill {
+      background: #e5dfd3;
+      padding: 0.3rem 0.9rem;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #4a3f32;
+    }
 
-        .avatar {
-            width: 110px;
-            height: 110px;
-            background: #1f192b;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 2px solid var(--accent-pink);
-            box-shadow: 0 0 12px var(--accent-pink);
-            object-fit: cover;
-        }
+    /* контент */
+    .content {
+      padding: 2rem;
+    }
 
-        .glitch-name h1 {
-            font-size: 2.3rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #f9e6cf, #ffb3c6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 0px #4a0e2e;
-        }
-        .glitch-name p {
-            color: var(--accent-pink);
-            font-size: 0.8rem;
-            font-family: monospace;
-        }
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #3c3730;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #bcafa0;
+      padding-left: 1rem;
+    }
 
-        /* блок описания */
-        .quote {
-            font-size: 0.95rem;
-            line-height: 1.45;
-            background: #0c0a12;
-            padding: 0.9rem;
-            border-left: 5px solid var(--accent-blood);
-            margin-bottom: 1.8rem;
-            color: #cdc9e0;
-            font-family: monospace;
-        }
+    /* фандомная сетка — все твои игры/вселенные */
+    .fandom-grid {
+      margin: 1.8rem 0 2rem;
+    }
+    .fandom-title {
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #7d6e5c;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed #e2dcd2;
+      display: inline-block;
+    }
+    .fandom-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .fandom-item {
+      background: #f4f1ea;
+      border-radius: 40px;
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 450;
+      color: #524b41;
+      transition: 0.1s linear;
+      border: 1px solid #e3ddd2;
+    }
 
-        /* ФАНДОМЫ — теги в стиле Cult of the Lamb */
-        .fandom-title {
-            font-size: 1rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 0.8rem;
-            color: #b91c48;
-        }
-        .fandom-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-bottom: 2rem;
-        }
-        .fandom {
-            background: #191229;
-            border: 1px solid #f43f5e55;
-            padding: 0.4rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            backdrop-filter: blur(4px);
-            color: #ffbfcf;
-            transition: 0.1s linear;
-            box-shadow: 0 0 5px #b91c2c33;
-        }
-        .fandom:hover {
-            border-color: #ff7a9e;
-            text-shadow: 0 0 3px red;
-            transform: skewX(-2deg);
-        }
+    /* соцсети в спокойном ритме */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+      margin-top: 1rem;
+    }
+    .btn {
+      background: #f0ede7;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      color: #3e3a33;
+      font-size: 0.85rem;
+      font-weight: 470;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn:hover {
+      background: #e1d9cf;
+      transform: translateY(-1px);
+    }
 
-        /* соцсети — стиль дверей (Doors) */
-        .doors {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        .door-link {
-            background: #06040a;
-            border: 1px solid #b91c5a;
-            padding: 0.6rem 1rem;
-            border-radius: 18px;
-            text-decoration: none;
-            color: #e2c7d7;
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-            width: auto;
-        }
-        .door-link:hover {
-            background: #b91c2c30;
-            box-shadow: 0 0 8px red;
-            color: white;
-            border-color: #ff99bb;
-        }
+    .contact-row {
+      border-top: 1px solid #ece4da;
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #8b8274;
+    }
 
-        /* контакты и кровавая печать */
-        .footer-contact {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            font-size: 0.75rem;
-            border-top: 1px solid #2f2740;
-            padding-top: 1rem;
-            color: #7c6b8c;
-        }
-        .symbol {
-            color: #b91c2c;
-            font-weight: bold;
-        }
-
-        @media (max-width: 550px) {
-            body {
-                padding: 0.8rem;
-            }
-            .glitch-name h1 {
-                font-size: 1.6rem;
-            }
-            .avatar-section {
-                justify-content: center;
-                text-align: center;
-            }
-            .inner {
-                padding: 1rem;
-            }
-        }
-    </style>
+    @media (max-width: 560px) {
+      body { padding: 1rem; }
+      .hero { padding: 1.5rem; }
+      h1 { font-size: 1.7rem; }
+      .content { padding: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
 <div class="card">
-    <div class="inner">
-        <div class="badge-line">
-            <span>✦ [CULT LOG] ✦</span>
-            <span class="crown">🐑 ████</span>
-        </div>
-
-        <div class="avatar-section">
-            <!-- СЮДА ВСТАВЬ ССЫЛКУ НА ЕЁ ФОТО -->
-            <img class="avatar" src="https://placehold.co/400x400/1c1428/f43f5e?text=🎭" alt="аватар">
-            <div class="glitch-name">
-                <h1>{{ИМЯ}}</h1>
-                <p>// follower of the weird + digital artist //</p>
-            </div>
-        </div>
-
-        <div class="quote">
-            🎪 «Welcome to the digital circus, where the doors only open for the faithful lamb.» <br>
-            ✦ TADC | Roblox Doors | Cult of the Lamb ✦
-        </div>
-
-        <!-- Блок фандомов ⬇️  замени / добавь если нужно -->
-        <div class="fandom-title">◈ THE LAMBS PANTHEON ◈</div>
-        <div class="fandom-list">
-            <span class="fandom">🎪 TADC</span>
-            <span class="fandom">🚪 Roblox DOORS</span>
-            <span class="fandom">🐑 Cult of the Lamb</span>
-            <span class="fandom">🩸 horror games</span>
-            <span class="fandom">🎸 dark vibes</span>
-        </div>
-
-        <!-- Соцсети / контакты (укажи её реальные никнеймы) -->
-        <div class="doors">
-            <a href="#" class="door-link">📱 Telegram / @{{ее_телеграм}}</a>
-            <a href="#" class="door-link">🎨 Discord / {{ее_дискорд}}</a>
-            <a href="#" class="door-link">🐙 GitHub / {{гитхаб_ник}}</a>
-            <a href="#" class="door-link">📷 Instagram / {{инста_ник}}</a>
-        </div>
-
-        <div class="footer-contact">
-            <span>✧ <span class="symbol">⛧</span> CULTIST’S VIBE <span class="symbol">⛧</span> ✧</span>
-            <span>📧 {{почта_или_контакт}}</span>
-        </div>
+  <div class="hero">
+    <div class="top-row">
+      <span>✦ ༘ AMERICAN VIBE ˚ ༘ ೀ</span>
+      <span>✧ east coast . offline moment ✧</span>
     </div>
+    <img class="avatar" src="https://placehold.co/500x500/e1d9cf/8e806c?text=sporty" alt="avatar">
+    <div class="name-badge">
+      <h1>sporty.</h1>
+      <div class="location">📍 Pennsylvania / online</div>
+    </div>
+    <div class="tags">
+      <span class="pill">#roblox player</span>
+      <span class="pill">#myths hunter</span>
+      <span class="pill">#quiet enjoyer</span>
+      <span class="pill">#america fan</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="description">
+      🧸  just a girl who loves old roblox myths, horror doors, and calm american suburbs.  
+      💿  cult of the lamb, need more heat, grocery gang — i’m into weird and cozy at the same time.
+    </div>
+
+    <!-- ПОЛНЫЙ СПИСОК, который ты скинул -->
+    <div class="fandom-grid">
+      <div class="fandom-title">✦ COLLECTION · фандомы ✦</div>
+      <div class="fandom-list">
+        <span class="fandom-item">роблокс</span>
+        <span class="fandom-item">роблокс мифы (олд, хаккеры, орг, создатели)</span>
+        <span class="fandom-item">рояль хай</span>
+        <span class="fandom-item">эвейд</span>
+        <span class="fandom-item">gasa4</span>
+        <span class="fandom-item">grocery gang</span>
+        <span class="fandom-item">сенчоус</span>
+        <span class="fandom-item">RNABS</span>
+        <span class="fandom-item">файтинг</span>
+        <span class="fandom-item">need more heat</span>
+        <span class="fandom-item">soybean</span>
+        <span class="fandom-item">kavra</span>
+        <span class="fandom-item">work at pizza place</span>
+        <span class="fandom-item">tr:ud</span>
+        <span class="fandom-item">hello John doe</span>
+        <span class="fandom-item">форсакен (нет)</span>
+        <span class="fandom-item">подонки</span>
+        <span class="fandom-item">рейнбоу френдс</span>
+        <span class="fandom-item">дорс</span>
+        <span class="fandom-item">Cult of the Lamb</span>
+        <span class="fandom-item">TADC</span>
+        <span class="fandom-item">аперафобия</span>
+      </div>
+    </div>
+
+    <!-- ссылки (вставь реальные профили) -->
+    <div class="links">
+      <a href="#" class="btn">📱 Telegram / @sporty</a>
+      <a href="#" class="btn">📷 Inst / sporty.png</a>
+      <a href="#" class="btn">🐙 GitHub / sporty_alt</a>
+      <a href="#" class="btn">🎮 Roblox / @sporty</a>
+    </div>
+
+    <div class="contact-row">
+      <span>🗽  US timezone  ·  she/her  ·  calm energy</span>
+      <span>📧  sporty@cozy.america</span>
+    </div>
+  </div>
 </div>
 
 </body>
